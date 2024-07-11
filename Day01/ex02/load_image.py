@@ -1,6 +1,6 @@
 import numpy as np
 from PIL import Image
-import sys
+# import sys
 
 
 def ft_load(path: str) -> np.array:
@@ -14,5 +14,5 @@ def ft_load(path: str) -> np.array:
         print('Error:', e)
         return None
 
-if __name__ == '__main__':
-    ft_load(sys.argv[1])
+# if __name__ == '__main__':
+#     ft_load(sys.argv[1])
