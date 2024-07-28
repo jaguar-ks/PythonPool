@@ -13,29 +13,32 @@ def renderGraph(ds: pd.DataFrame) -> None:
     Parameters:
         ds (pd.DataFrame): The dataset to render.
     """
-    # Transpose the DataFrame if not already done
-    ds = ds.T
+    try:
+        # Transpose the DataFrame if not already done
+        ds = ds.T
 
-    # Reset index to make 'Years' a column
-    ds.reset_index(inplace=True)
-    ds.rename(columns={'index': 'Year'}, inplace=True)
+        # Reset index to make 'Years' a column
+        ds.reset_index(inplace=True)
+        ds.rename(columns={'index': 'Year'}, inplace=True)
 
-    # Convert index to numeric if necessary (optional)
-    ds['Year'] = pd.to_numeric(ds['Year'], errors='coerce')
+        # Convert index to numeric if necessary (optional)
+        ds['Year'] = pd.to_numeric(ds['Year'], errors='coerce')
 
-    # Plot the data
-    plt.figure(figsize=(10, 6))
-    sns.lineplot(x='Year', y='Morocco', data=ds).set(
-        xlabel='Years',
-        ylabel='Life expectancy',
-        title='Morocco life expectancy projection'
-    )
+        # Plot the data
+        plt.figure(figsize=(10, 6))
+        sns.lineplot(x='Year', y='Morocco', data=ds).set(
+            xlabel='Years',
+            ylabel='Life expectancy',
+            title='Morocco life expectancy projection'
+        )
 
-    # Customize the x-axis ticks
-    plt.xticks(ticks=np.arange(1800, 2100, 20), rotation=45)
+        # Customize the x-axis ticks
+        plt.xticks(ticks=np.arange(1800, 2100, 20), rotation=45)
 
-    # Display the plot
-    plt.show()
+        # Display the plot
+        plt.show()
+    except Exception as e:
+        print('Rendring the Graph:', e)
 
 
 if __name__ == '__main__':
