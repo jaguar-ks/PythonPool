@@ -2,7 +2,7 @@ import pandas as pd
 from load_csv import load
 import sys
 import matplotlib.pyplot as plt
-# import seaborn as sns
+import seaborn as sns
 
 
 def renderGraph(ds: pd.DataFrame) -> None:
@@ -12,7 +12,12 @@ def renderGraph(ds: pd.DataFrame) -> None:
     Parameters:
         ds (pd.DataFrame): The dataset to render.
     """
-    ds['Morocco'].plot().lines[0].set_linestyle('-')
+    sns.lineplot(data=ds['Morocco']).set(
+        xlabel='Years',
+        ylabel='Life expectancy',
+        title='Morocco life expectancy projection'
+    )
+    # ds['Morocco'].plot().lines[0].set_linestyle('-')
     plt.show()
 
 
