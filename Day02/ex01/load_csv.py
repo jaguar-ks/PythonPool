@@ -14,7 +14,7 @@ def load(path: str) -> pd.DataFrame:
         or None if an error occurs.
     """
     try:
-        ds: pd.DataFrame = pd.read_csv(path)
+        ds: pd.DataFrame = pd.read_csv(path, index_col=0)
         print('Loading a dataset of dimensions of', ds.shape)
         return ds
     except Exception as e:
