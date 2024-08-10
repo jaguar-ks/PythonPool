@@ -23,14 +23,11 @@ def renderGraph(ds: pd.DataFrame) -> None:
         ds.reset_index(inplace=True)
         ds.rename(columns={'index': 'Year'}, inplace=True)
         ds['Year'] = pd.to_numeric(ds['Year'], errors='coerce')
-        plt.figure(figsize=(10, 6))
-        sns.lineplot(x='Year', y='Morocco', data=ds).set(
-            xlabel='Years',
-            ylabel='Life expectancy',
-            title='Morocco life expectancy projection'
-        )
-        sns.lineplot(x='Year', y='Monaco', data=ds)
         plt.xticks(ticks=np.arange(1800, 2100, 20), rotation=45)
+        plt.yticks(ticks=np.arange(0, 100, 20))
+        plt.plot(ds['Year'], ds['Belgium'], label='Belgium')
+        plt.plot(ds['Year'], ds['France'], label='France')
+        plt.legend()
         plt.show()
         pass
     except Exception as e:
