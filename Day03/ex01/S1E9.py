@@ -32,6 +32,27 @@ class Character (ABC):
         """
         pass
 
+    def die(self):
+        """
+    Kills the character.
+        """
+        if self.is_alive:
+            self.changeHealthState()
+    
+    def __str__(self):
+        """
+    Returns a string representation of the object.
+
+    This method is automatically called when the object is used in a string context,
+    such as when using the `str()` function or when using the object in a formatted string.
+
+    Returns:
+        str: A string representation of the object.
+        """
+        return f"<bound method {self.__class__.__name__} of"
+
+    def __repr__(self):
+        return f"Vector: ('{self.family_name}', '{self.eyes}', '{self.hair}') "
 
 class Stark(Character):
     """
@@ -46,13 +67,6 @@ class Stark(Character):
     If the character is dead, it sets the is_alive attribute to True.
         """
         self.is_alive = not self.is_alive
-
-    def die(self):
-        """
-    Kills the Stark character.
-        """
-        if self.is_alive:
-            self.changeHealthState()
 
 
 # if __name__ == '__main__':
