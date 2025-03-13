@@ -40,9 +40,7 @@ def rotateImage(img: np.ndarray) -> np.ndarray:
 
     """
     try:
-        n_img = [[img[j][i] for j in range(len(img))]
-                 for i in range(len(img[0]))]
-        return n_img
+        return np.rot90(img)
     except Exception as e:
         print('Error:', e)
         return None

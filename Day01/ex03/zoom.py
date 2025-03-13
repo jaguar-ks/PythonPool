@@ -2,6 +2,7 @@ import numpy as np
 import scipy as sp
 import matplotlib.pyplot as plt
 from load_image import ft_load
+# from PIL import Image as im
 import sys
 from skimage import color
 
@@ -23,8 +24,11 @@ def zoom_img(img: np.ndarray, factor: int) -> np.ndarray:
     """
     try:
         n_img: np.ndarray = sp.ndimage.zoom(img, zoom=(factor, factor, 1.0))
-        n_img = n_img[300:1000, 900:1600]
+        # n_img = n_img[300:1000, 900:1600]
         n_img = color.rgb2gray(n_img)
+        # data = im.fromarray(n_img)
+        # print(n_img)
+        # data.save('new_img.png')
         return n_img
     except Exception as e:
         print('Error:', e)
@@ -42,9 +46,9 @@ def displayImages(imgs: list[np.ndarray]) -> None:
         None
     """
     try:
-        fig, axes = plt.subplots(1, len(imgs), figsize=(10, 10))
+        fig, axes = plt.subplots(1, len(imgs), figsize=(12, 6))
         for i, img in enumerate(imgs):
-            axes[i].imshow(img, cmap='gray')
+            axes[i].imshow(img, aspect='equal', cmap='gray')
         plt.tight_layout()
         plt.show()
     except Exception as e:
