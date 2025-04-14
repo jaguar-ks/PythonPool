@@ -29,9 +29,8 @@ def renderGraph(ds: pd.DataFrame) -> None:
                       ylabel='Population',
                       title='Population over the years of France and Morocco'
                       )
-        # plt.show()
-        plt.savefig("plot.png")
-        # print(nds)
+        plt.show()
+        # plt.savefig("plot.png")
         pass
     except Exception as e:
         print('Rendering the Graph:', e)
