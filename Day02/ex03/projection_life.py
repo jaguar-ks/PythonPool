@@ -23,15 +23,14 @@ def renderGraph(gdp: pd.DataFrame, le: pd.DataFrame) -> None:
         plt.ylabel('Life Expectancy')
         plt.xticks([300, 1000, 10000], ['300', '1k', '10k'])
         plt.xlim(300, 10100)
-        # plt.show()
-        plt.savefig('scatterPlot.png')
+        plt.show()
     except Exception as e:
         print('Rendering the Graph:', e)
 
 
 if __name__ == '__main__':
     try:
-        gdp = load('pop.csv')
+        gdp = load('income_per_person_gdppercapita_ppp_inflation_adjusted.csv')
         le = load('life_expectancy_years.csv')
         renderGraph(gdp, le)
     except Exception as e:
